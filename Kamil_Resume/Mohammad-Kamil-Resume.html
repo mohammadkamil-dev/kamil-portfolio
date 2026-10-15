@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Mohammad Kamil — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --navy: #1b1d2b;
+    --gold: #b8923a;
+    --gold-soft: #f1e7cc;
+    --cream: #f4f2ec;
+    --text: #1f2230;
+    --muted: #6b6e7a;
+    --line: #e4dfd0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: 'Inter', Arial, sans-serif; color: var(--text); background: #d9d9d9; font-size: 9.8pt; line-height: 1.55; }
+  .page { width: 210mm; height: 297mm; margin: 0 auto 10px; background: #fff; position: relative; overflow: hidden; page-break-after: always; }
+  @media print { body { background: #fff; } .page { margin: 0; } .export-btn { display: none !important; } }
+  .export-btn { position: fixed; top: 18px; right: 22px; z-index: 99; background: var(--navy); color: var(--gold); border: 1.5px solid var(--gold); border-radius: 30px;
+                padding: 11px 22px; font: 700 13px 'Inter', Arial, sans-serif; letter-spacing: .06em; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+  .export-btn:hover { background: var(--gold); color: var(--navy); }
+
+  /* ---------- Header ---------- */
+  .header { background: var(--navy); height: 52mm; padding: 9mm 14mm 0 14mm; display: flex; gap: 8mm; border-bottom: 1.6mm solid var(--gold); }
+  .photo { width: 34mm; height: 34mm; border-radius: 50%; border: 1.4mm solid var(--gold); background: #2b2e42; flex: none;
+           display: flex; align-items: center; justify-content: center; color: var(--gold); font-family: 'Playfair Display', Georgia, serif; font-size: 26pt; overflow: hidden; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .name { font-family: 'Playfair Display', Georgia, serif; color: #fff; font-size: 27pt; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; line-height: 1.1; margin-top: 1mm; }
+  .name b { color: var(--gold); font-weight: 600; }
+  .tagline { color: #b9bbc6; font-size: 8.6pt; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; margin: 2.5mm 0 4mm; }
+  .chips { display: flex; flex-wrap: wrap; gap: 2mm; }
+  .chip { color: #e8e9ee; border: .3mm solid #5d5a4a; border-radius: 20px; padding: 1.2mm 3.6mm; font-size: 7.6pt; background: rgba(255,255,255,.04); }
+  .chip i { color: var(--gold); font-style: normal; margin-right: 1.5mm; }
+
+  /* ---------- Body columns ---------- */
+  .cols { display: flex; height: calc(297mm - 52mm - 1.6mm); }
+  .left { width: 63%; padding: 8mm 8mm 0 14mm; }
+  .right { width: 37%; background: var(--cream); border-left: .3mm solid var(--line); padding: 8mm 11mm 0 8mm; }
+
+  h2 { font-size: 10.5pt; letter-spacing: .26em; text-transform: uppercase; font-weight: 800; padding-bottom: 1.6mm; border-bottom: .5mm solid var(--gold); margin-bottom: 3.6mm; }
+  .sec { margin-bottom: 5mm; }
+  .profile { text-align: justify; font-size: 9.6pt; line-height: 1.65; }
+  b { font-weight: 700; }
+
+  .co { display: flex; justify-content: space-between; align-items: baseline; font-weight: 700; font-size: 9.8pt; margin-bottom: 3mm; }
+  .co span { color: var(--gold); font-size: 8pt; font-weight: 600; }
+
+  .timeline { position: relative; padding-left: 7mm; }
+  .timeline::before { content: ''; position: absolute; left: 2mm; transform: translateX(-50%); top: 2.6mm; bottom: 0; width: .5mm; background: #ddd6c0; }
+  .job { position: relative; margin-bottom: 5mm; }
+  .job::before { content: ''; position: absolute; left: -5mm; transform: translateX(-50%); top: .6mm; width: 4mm; height: 4mm; border-radius: 50%; background: var(--gold); border: .7mm solid #fff; box-shadow: 0 0 0 .4mm var(--gold); }
+  .job-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 3mm; }
+  .role { font-size: 11pt; font-weight: 700; }
+  .org { color: var(--gold); font-weight: 600; font-size: 8.6pt; margin-bottom: 1.6mm; }
+  .date { background: var(--gold-soft); color: #7d6322; font-weight: 700; font-size: 7.8pt; padding: 1.2mm 3.4mm; border-radius: 20px; white-space: nowrap; }
+  ul.pts { list-style: none; }
+  ul.pts li { position: relative; padding-left: 4.5mm; margin-bottom: 2.1mm; font-size: 9.3pt; }
+  ul.pts li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); font-size: 7pt; top: .5mm; }
+  .ph { background: #fff3c4; border-radius: 2px; padding: 0 1mm; }  /* placeholder marker */
+
+  .banner { background: var(--navy); color: var(--gold); font-weight: 800; font-size: 7pt; letter-spacing: .16em; text-transform: uppercase; text-align: center; padding: 2.3mm; border-radius: 20px; margin-top: 3mm; }
+
+  /* ---------- Right ---------- */
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin-bottom: 4.5mm; }
+  .stat { background: #fff; border: .3mm solid var(--line); border-radius: 2mm; text-align: center; padding: 1.8mm 1mm; }
+  .stat .n { font-family: 'Playfair Display', Georgia, serif; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1; font-size: 13.5pt; color: var(--gold); line-height: 1.1; }
+  .stat .l { font-size: 6.4pt; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 1mm; }
+  .skill-h { color: var(--gold); font-weight: 800; font-size: 7.6pt; letter-spacing: .16em; text-transform: uppercase; margin: 2.8mm 0 1.4mm; }
+  .tags { display: flex; flex-wrap: wrap; gap: 1.2mm; }
+  .tag { background: #fff; border: .3mm solid #d6d0bd; border-radius: 1.4mm; padding: 1mm 2.6mm; font-size: 7.6pt; font-weight: 600; color: #2b2e3d; }
+  .edu { background: #fff; border: .3mm solid var(--line); border-left: .9mm solid var(--gold); border-radius: 2mm; padding: 3mm 4mm; }
+  .edu .d { font-weight: 700; font-size: 9.8pt; }
+  .edu .s { color: var(--muted); font-size: 8.6pt; }
+  .edu .y { color: var(--gold); font-weight: 700; font-size: 8pt; margin-top: 1mm; }
+
+  /* ---------- Page 2 ---------- */
+  .p2-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: .8mm solid var(--navy); margin: 0 14mm; padding: 12mm 0 3mm; }
+  .p2-head .t { font-family: 'Playfair Display', Georgia, serif; font-size: 20pt; font-weight: 600; }
+  .p2-head .n { font-size: 7.6pt; letter-spacing: .2em; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+  .p2-body { padding: 7mm 14mm 0; }
+  .ai { background: var(--navy); border-radius: 3mm; padding: 4.5mm 5mm 3.5mm; margin-bottom: 4mm; }
+  .ai h4, .box h4 { font-size: 9.2pt; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; margin-bottom: 2.5mm; }
+  .ai h4 { color: var(--gold); }
+  .ai .tag { background: rgba(255,255,255,.06); border-color: #6a664f; color: #e8e9ee; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.6mm; }
+  .box { background: #faf8f1; border: .3mm solid var(--line); border-left: 1mm solid var(--gold); border-radius: 2mm; padding: 3.4mm 4mm 3mm; }
+  .foot { margin-top: 5mm; background: var(--navy); color: #fff; border-radius: 3mm; padding: 4mm 5mm; display: flex; justify-content: space-between; gap: 4mm; font-size: 7.6pt; font-weight: 600; }
+  .foot span { white-space: nowrap; }
+  .foot b { color: var(--gold); font-weight: 800; margin-right: 1.2mm; }
+</style>
+</head>
+<body>
+<button class="export-btn" onclick="exportPDF()">⬇ Export PDF</button>
+
+<!-- ===================== PAGE 1 ===================== -->
+<div class="page">
+  <div class="header">
+    <div class="photo"><!-- Replace with: <img src="kamil.jpg" alt="Mohammad Kamil" /> -->MK</div>
+    <div>
+      <div class="name">Mohammad <b>Kamil</b></div>
+      <div class="tagline">Full Stack Developer</div>
+      <div class="chips">
+        <span class="chip"><i>✉</i>dev.mohammadkamil@gmail.com</span>
+        <span class="chip"><i>✆</i>+91 78802 48433</span>
+        <span class="chip"><i>⌖</i>Indore, India</span>
+        <span class="chip"><i>in</i>linkedin.com/in/mohammad-kamil-2b80aa444</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="left">
+      <div class="sec">
+        <h2>Profile</h2>
+        <p class="profile"><b>Full Stack Developer</b> with <b>3+ years</b> building production-grade web and mobile applications at Mataaf Technologies, <b>promoted twice</b> in recognition of ownership and consistent delivery. Specialist in shipping reliable, scalable products on a <b>Node.js/NestJS &amp; React</b> stack, and building cross-platform <b>mobile apps for Android and iOS with React Native</b> &mdash; from API design and database modelling to responsive user interfaces. Strong advocate of clean code and thorough code reviews, while accelerating delivery with AI-powered development (<b>Claude, Cursor, GitHub Copilot, Antigravity</b>). Collaborates closely with designers, QA and stakeholders <b>from design to deployment</b>.</p>
+      </div>
+
+      <div class="sec">
+        <h2>Experience</h2>
+        <div class="co"><div>Mataaf Technologies · Remote</div><span>2024 – Present · Promoted 2×</span></div>
+        <div class="timeline">
+          <div class="job">
+            <div class="job-head"><div class="role">Full Stack Developer</div><div class="date">2026 – Present</div></div>
+            <div class="org">Mataaf Technologies · Product Ownership</div>
+            <ul class="pts">
+              <li>Own features end-to-end across <b>frontend, backend and mobile</b>, from requirements to release.</li>
+              <li>Build and publish <b>React Native apps</b> for Android and iOS, managing <b>Google Play and App Store</b> listings and releases.</li>
+              <li>Take <b>product-level responsibility</b> &mdash; technical decisions, planning and stakeholder collaboration.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <div class="job-head"><div class="role">Full Stack Developer</div><div class="date">2025 – 2026</div></div>
+            <div class="org">Mataaf Technologies</div>
+            <ul class="pts">
+              <li>Built <b>frontend and backend</b> features for web apps on Node.js/NestJS &amp; React.</li>
+              <li>Designed REST APIs and databases and took modules from development to deployment.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <div class="job-head"><div class="role">Web Application Developer</div><div class="date">2024 – 2025</div></div>
+            <div class="org">Mataaf Technologies</div>
+            <ul class="pts">
+              <li>Built responsive <b>web application UIs</b> and reusable components from designs.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="banner">Web Application Developer → Full Stack Developer → Product Ownership at the same company</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <h2>Highlights</h2>
+      <div class="stats">
+        <div class="stat"><div class="n">3+</div><div class="l">Years Exp.</div></div>
+        <div class="stat"><div class="n">3+</div><div class="l">Yrs Mataaf</div></div>
+        <div class="stat"><div class="n">2×</div><div class="l">Promoted</div></div>
+        <div class="stat"><div class="n">90%</div><div class="l">TDD Coverage</div></div>
+      </div>
+
+      <h2>Core Skills</h2>
+      <div class="skill-h">Backend</div>
+      <div class="tags"><span class="tag">Node.js</span><span class="tag">NestJS</span><span class="tag">Express.js</span><span class="tag">TypeScript</span><span class="tag">REST APIs</span><span class="tag">GraphQL</span><span class="tag">OAuth</span><span class="tag">Webhooks</span></div>
+      <div class="skill-h">Frontend</div>
+      <div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Angular</span></div>
+      <div class="skill-h">Mobile</div>
+      <div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Android Studio</span><span class="tag">Xcode</span><span class="tag">Push Notifications</span><span class="tag">Firebase</span><span class="tag">Play Store &amp; App Store Publishing</span></div>
+      <div class="skill-h">Real-Time</div>
+      <div class="tags"><span class="tag">WebRTC</span><span class="tag">WebSockets</span><span class="tag">Socket.IO</span></div>
+      <div class="skill-h">Data &amp; Cloud</div>
+      <div class="tags"><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">CI/CD</span></div>
+
+      <h2 style="margin-top:5mm">Education</h2>
+      <div class="edu">
+        <div class="d">12th Pass</div>
+        <div class="s">Higher Secondary · <span class="ph">[School / Board]</span></div>
+        <div class="y">2020</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PAGE 2 ===================== -->
+<div class="page">
+  <div class="p2-head">
+    <div class="t">Skills Matrix</div>
+    <div class="n">Mohammad Kamil · Full Stack Developer</div>
+  </div>
+  <div class="p2-body">
+    <div class="ai">
+      <h4>AI-Powered Development</h4>
+      <div class="tags"><span class="tag">Claude</span><span class="tag">Cursor</span><span class="tag">GitHub Copilot</span><span class="tag">Antigravity</span></div>
+    </div>
+    <div class="grid">
+      <div class="box"><h4>Backend</h4><div class="tags"><span class="tag">Node.js</span><span class="tag">NestJS</span><span class="tag">Express.js</span><span class="tag">TypeScript</span></div></div>
+      <div class="box"><h4>Frontend</h4><div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Angular</span></div></div>
+      <div class="box"><h4>Mobile</h4><div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Android Studio</span><span class="tag">Xcode</span><span class="tag">Push Notifications</span><span class="tag">Firebase</span><span class="tag">Play Store &amp; App Store Publishing</span></div></div>
+      <div class="box"><h4>Real-Time</h4><div class="tags"><span class="tag">WebRTC</span><span class="tag">WebSockets</span><span class="tag">Socket.IO</span></div></div>
+      <div class="box"><h4>APIs &amp; Integrations</h4><div class="tags"><span class="tag">REST APIs</span><span class="tag">GraphQL</span><span class="tag">OAuth</span><span class="tag">Webhooks</span></div></div>
+      <div class="box"><h4>Data &amp; Cloud</h4><div class="tags"><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">CI/CD</span></div></div>
+    </div>
+    <div class="foot">
+      <span><b>Email</b>dev.mohammadkamil@gmail.com</span>
+      <span><b>Phone</b>+91 78802 48433</span>
+      <span><b>LinkedIn</b>linkedin.com/in/mohammad-kamil-2b80aa444</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function exportPDF() {
+    var old = document.title;
+    document.title = 'Mohammad-Kamil-Resume';   // used as the default PDF file name
+    window.print();                              // choose "Save as PDF" as destination
+    document.title = old;
+  }
+</script>
+</body>
+</html>
